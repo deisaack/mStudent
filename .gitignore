@@ -1,4 +1,6 @@
-records/
+records/admin.py
+records/main.py
+records/models.py
 tst/
 db.*
 
