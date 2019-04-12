@@ -1,0 +1,30 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "cd0bd5d387eb5613105d52b0629ea3bfda4726cb17307fba606305c81365fb6a"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "eospy": {
+            "path": "."
+        },
+        "libeospy": {
+            "path": "."
+        },
+        "qeos": {
+            "path": "."
+        }
+    },
+    "develop": {}
+}
