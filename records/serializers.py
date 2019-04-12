@@ -6,15 +6,16 @@ from records.models import Student, PrimaryExam, SecondaryExam, UniversityExam, 
 
 class StudentSerializer(serializers.ModelSerializer):
     school = serializers.SerializerMethodField()
+
     class Meta:
         model = Student
         fields = (
             "id",
-        "full_name",
-        "adm_no",
-        "dob",
-        "gender",
-        "school")
+            "full_name",
+            "adm_no",
+            "dob",
+            "gender",
+            "school")
 
     def get_school(self, obj):
         return obj.school.name
@@ -48,23 +49,23 @@ class SecondaryExamSerializer(serializers.ModelSerializer):
     class Meta:
         model = SecondaryExam
         fields = ("id",
-            "maths",
-            "english",
-            "kiswahili",
-            "chem",
-            "phy",
-            "bio",
-            "comp",
-            "bst",
-            "agr",
-            "art",
-            "cre",
-            "music",
-            "date",
-            "klass",
-            "student",
-            "school", "average",
-                  "totalscore", )
+                  "maths",
+                  "english",
+                  "kiswahili",
+                  "chem",
+                  "phy",
+                  "bio",
+                  "comp",
+                  "bst",
+                  "agr",
+                  "art",
+                  "cre",
+                  "music",
+                  "date",
+                  "klass",
+                  "student",
+                  "school", "average",
+                  "totalscore",)
 
     def get_school(self, obj):
         return obj.school.name
@@ -105,18 +106,20 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerialier(serializers.ModelSerializer):
+    school = serializers.SerializerMethodField()
+
     class Meta:
         model = Payment
         fields = ("id",
-            "date",
-            "amount",
-            "receipt_no",
-            "student",
-            "school"
+                  "date",
+                  "amount",
+                  "receipt_no",
+                  "student",
+                  "school"
                   )
+
     def get_student(self, obj):
         return obj.student.full_name
 
-    def school(self, obj):
+    def get_school(self, obj):
         return obj.school.name
-
