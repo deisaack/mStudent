@@ -22,16 +22,29 @@ class StudentSerializer(serializers.ModelSerializer):
 
 class PrimaryExamSerializer(serializers.ModelSerializer):
     school = serializers.SerializerMethodField()
+    totalscore = serializers.SerializerMethodField()
+    average = serializers.SerializerMethodField()
 
     class Meta:
         model = PrimaryExam
-        fields = "__all__"
+        fields = ("school", "average", "sst", "date", "klass", "student", "school",
+                  "totalscore", "id", "maths", "english", "kiswahili", "science")
 
     def get_school(self, obj):
         return obj.school.name
 
+    def get_totalscore(self, obj):
+        return obj.totalscore
+
+    def get_average(self, obj):
+        return obj.average
+
+
 class SecondaryExamSerializer(serializers.ModelSerializer):
     school = serializers.SerializerMethodField()
+    totalscore = serializers.SerializerMethodField()
+    average = serializers.SerializerMethodField()
+
     class Meta:
         model = SecondaryExam
         fields = ("id",
@@ -50,10 +63,17 @@ class SecondaryExamSerializer(serializers.ModelSerializer):
             "date",
             "klass",
             "student",
-            "school")
+            "school", "average",
+                  "totalscore", )
 
     def get_school(self, obj):
         return obj.school.name
+
+    def get_totalscore(self, obj):
+        return obj.totalscore
+
+    def get_average(self, obj):
+        return obj.average
 
 
 class UniversityExamSerializer(serializers.ModelSerializer):
